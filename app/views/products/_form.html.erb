@@ -1,0 +1,43 @@
+<div class="formedit">
+<%= form_for(@product, html: {multipart: true}) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <p>
+    <%= form.label :product_name %><br/>
+    <%= form.text_field :product_name ,required: true%>
+    </p>
+  </div>
+
+  <div class="field">
+    <p>
+    <%= form.label :product_description %><br/>
+    <%= form.text_field :product_description, required: true %>
+  </p>
+  </div>
+<div>
+  <p>
+  <% if @product.image.exists? %>
+      <%= image_tag @product.image.url, :style => "width :200px;height :100px;" %><br/>
+  <% end %>
+  <%= form.label :image, "Attach a New Image" %><br />
+  <%= form.file_field :image %>
+</p>
+</div>
+<p>
+  <div class="actions">
+    <%= form.submit %>
+  </div></p>
+<% end %>
+</div>
+

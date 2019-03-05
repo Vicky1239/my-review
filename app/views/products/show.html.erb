@@ -1,0 +1,21 @@
+<h1><%= @product.product_name %></h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product name:</strong>
+  <%= @product.product_name %>
+</p>
+
+<p>
+  <strong>Product description:</strong>
+  <%= @product.product_description %>
+  <p><%= image_tag @product.image.url, :style => "width :300px;height :200px;" %></p>
+
+</p>
+
+<button type="button" class="btn btn-dark"><%= link_to 'Edit', edit_product_path(@product) %></button>
+ <button type="button" class="btn btn-dark"><%= link_to 'Destroy', @product, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+<button type="button" class="btn btn-dark"><%= link_to 'Back', products_path %></button>
+<button type="button" class="btn btn-dark"><%= link_to 'add new review', new_product_review_path(@product) %></button>
+<button type="button" class="btn btn-dark"><%= link_to 'Click to view reviews', product_reviews_path(@product) %></button>
+

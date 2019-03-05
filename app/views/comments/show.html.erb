@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product name:</strong>
+  <%= @product.product_name %>
+</p>
+
+<p>
+	<strong>Review :</strong>
+	<%= @comment.review.review_body %>
+</p>
+<p>
+	<strong>Reviewed by :</strong>
+	<% @users.each do |u| %>
+		<% if u.id == @comment.review.user_id %>
+	<%= u.username %>
+	<% end %>
+	<% end %>
+</p>
+
+<p>
+	<strong>comment :</strong> <br/>
+	Comment Title: <%= @comment.title %> <br/>
+	Comment Description: <%= @comment.comment_body %><br/>
+	Commented by: <%= @comment.user.username %>
+</p>
+<% if @review.user_id==current_user.id %>
+	<button type="button" class="btn btn-dark"><%= link_to 'Edit comment', edit_product_review_comment_path(@review) %></button>
+<% end %>
+<% if @comment.user_id==current_user.id %>
+          <td><button type="button" class="btn btn-dark"><%= link_to 'Edit', edit_product_review_comment_path(id: @comment.id) %></button></td>
+          <td><button type="button" class="btn btn-dark"><%= link_to 'Destroy', product_review_comment_path(id: @comment.id), method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
+          <% else %>
+            <td>Edit</td>
+            <td>Destroy</td>
+          <% end %>
+<button type="button" class="btn btn-dark"><%= link_to 'Back to reviews', product_reviews_path %></button> 

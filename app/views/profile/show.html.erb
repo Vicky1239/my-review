@@ -1,0 +1,29 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-4">
+			<h3>Profile picture :<%= image_tag current_user.image.url, :style => "width :100%;height :auto;" %></h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<h3>Username: <%=current_user.username %></h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<h3>Email: <%=current_user.email %></h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<h3>Reviews: <%=current_user.reviews.count %></h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<h3>Comments: <%=current_user.comments.count %></h3>
+		</div>
+	</div>
+	
+	
+</div>

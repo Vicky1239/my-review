@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+    <center><h1>Products</h1></center>
+  <div style="overflow-x:auto;">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Product name</th>
+        <th>Product description</th>
+        <th>Product Image</th>
+        <th>View product</th>
+        <th>View Reviews</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.product_name %></td>
+          <td><%= product.product_description %></td>
+          <td><%= image_tag product.image.url, :style => "width :200px;height :100px;" %></td>
+          <td><button type="button" class="btn btn-dark"><%= link_to 'Show', product %></button></td>
+          <td><button type="button" class="btn btn-dark"><%= link_to 'Reviews', product_reviews_path(product) %></button></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <center><button type="button" class="btn btn-dark"><%= link_to 'Add New Product', new_product_path %></button></center>
+  </div>
+</div>

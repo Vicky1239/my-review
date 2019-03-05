@@ -1,0 +1,25 @@
+<h1>All Reviews</h1>
+
+<div style="overflow-x:auto;">
+<table>
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Review Description</th>
+      <th>Rating</th>
+      <th>Reviewed By</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviews.each do |r| %>
+      <tr>
+      	<td><%=r.product.product_name %></td>
+      	<td><%= r.review_body %></td>
+        <td><%= r.rating %></td>
+        <td><%= r.user.username %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

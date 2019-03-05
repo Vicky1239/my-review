@@ -1,0 +1,31 @@
+<div class="formedit">
+<%= form_for @review, url: product_reviews_path do |form| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <h2><%=@review.product.product_name %></h2>
+  </div>
+  <div class="field">
+    <%= form.label :rating %><br/>
+    <%= form.text_field :rating ,required: true%><br/>
+  </div>
+
+  <div class="field">
+    <%= form.label :review_description %><br/>
+    <%= form.text_field :review_body ,required: true %>
+  </div><br/>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+</div>

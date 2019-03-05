@@ -1,0 +1,40 @@
+<div class="container-fluid text-center" style="margin-bottom:0;font-family: verdana;">
+        <h1>Products</h1>
+        <div class="container-fluid">
+          <div class="row" style="text-align:center;">
+            <% @homeproducts.each do |p| %>
+              <div class="col-md-3 col-sm-3"><%= link_to (image_tag p.image.url, :style => "width :100%;height :auto;"),p %></div>
+            <% end %>
+        </div>
+          <button type="button" class="btn btn-dark"><%=link_to "View all products", products_path%></button>
+      </div>
+      </div>
+<hr>
+<br/>
+<h2>Your Reviews</h2>
+<div style="overflow-x:auto;">
+<table>
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Review Description</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviews.each do |r| %>
+      <tr>
+      	<td><%=r.product.product_name %></td>
+      	<td><%= r.review_body %></td>
+        <td><%= r.rating %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<hr>
+
+<h2>Products Reviewed by you</h2>
+<hr>
+<h3><%=link_to "View all reviews", profile_index_path%></h3>

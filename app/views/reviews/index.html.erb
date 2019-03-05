@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>All reviews for product : <%= @product.product_name %></h1>
+<div style="overflow-x:auto;">
+<table>
+  <thead>
+    <tr>
+      <th>Review Description</th>
+      <th>Rating</th>
+      <th>Reviewed By </th>
+      <th>View Review</th>
+      <th>View Comments</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviews.each do |r| %>
+      <tr>  
+        <td><%= r.review_body %></td>
+        <td><%= r.rating %></td>
+        <td><%= r.user.username %></td>
+        <td><button type="button" class="btn btn-dark"><%= link_to 'Show', product_review_path(id: r.id) %></button></td>
+        <td><button type="button" class="btn btn-dark"><%= link_to 'comments', product_review_comments_path(review_id: r.id) %></button></td>
+      </tr>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+
+
+

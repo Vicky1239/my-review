@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><h1>Product name:  <%= @product.product_name %></h1></strong>
+</p>
+
+<h2>Reviews</h2>
+<p>
+  <strong>Rating:</strong>
+  <%= @review.rating %>
+</p>
+
+<p>
+  <strong>Review description:</strong>
+  <%= @review.review_body %>
+</p>
+<p>
+  <strong>Reviewed By:</strong>
+  <%= @review.user.username %>
+</p>
+<% if @review.user_id==current_user.id %>
+	<button type="button" class="btn btn-dark"><%= link_to 'Edit', edit_product_review_path(id: @review.id) %></button>
+    <button type="button" class="btn btn-dark"><%= link_to 'Destroy', product_review_path(id: @review.id), method: :delete, data: { confirm: 'Are you sure?' } %></button>
+<% else %>
+    <td>Edit</td>
+    <td>Destroy</td>
+<% end %>
+<button type="button" class="btn btn-dark"><%= link_to 'Back to products', products_path %></button> 
+<button type="button" class="btn btn-dark"><%= link_to 'Back to Reviews', product_reviews_path %></button>
+<button type="button" class="btn btn-dark"><%= link_to 'Add new comment', new_product_review_comment_path(@product,@review) %></button>
