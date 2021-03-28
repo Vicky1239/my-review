@@ -11,47 +11,13 @@
 
   <body>
     <div>
-      <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top"> 
-        <ul class="nav navbar-nav pull-right">
-          <% if user_signed_in? %>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><span>Signed in as... <b><%= current_user.username %></b></span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><span><%= link_to (image_tag current_user.image.url, :style => "width :40%;height :auto;"),profile_path(current_user.id)%></span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href=""><span><%= link_to 'Edit Profile', edit_user_registration_path %> <b>|</b></span></a>
-            </li>
-          <% end %>
-          <%if current_user%>
-            <li class="nav-item">
-              <a class="nav-link" href=""><span><%= link_to 'Sign out', destroy_user_session_path, method: :delete%> <b>|</b> </span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href=""><span> <%= link_to 'Home', root_path%></span></a>
-            </li>
-          <%else%>
-              <li class="nav-item">
-              <a class="nav-link" href=""><span><%= link_to 'Sign up', new_user_registration_path%><b>|</b></span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href=""><span><%= link_to 'Sign in', user_session_path%><b>|</b></span></a>
-            </li>
-          <% end %>
-        </ul>
-      </nav>
+      <%= render "shared/navbar" %>
     </div>
-      <div class="jumbotron jumbotron-fluid text-center" style="margin-bottom:-60px;margin-top:10px;padding-top:100px;font-family: verdana;">
-        <h1><strong>My Reviews</strong></h1>
-        <p>user can add and view reviews about stuff (laptops, books,magazines, movies, music etc). User can also comment on the reviews.</p> 
-      </div>
-
-      <div class="container-fluid">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-      </div>
-    <div>
+    <%= render "shared/top_header" %>
+    <div class="container-fluid">
+      <p class="notice"><%= notice %></p>
+    </div>
+    <div class="row">
      <%= yield %>
     </div>
   </body>
